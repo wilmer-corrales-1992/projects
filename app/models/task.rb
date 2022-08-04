@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   belongs_to :project
   after_save :update_percent_complete
   scope :completed, -> {where(completed: true)}
+  mount_uploader :task_file, TaskFileUploader
 
   def update_percent_complete
     puts "y aca"

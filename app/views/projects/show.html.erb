@@ -1,6 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @project %>
+<hr>
+<h2>Tasks for project</h2>
+<% @tasks.each do |task| %>
+  <p><%= link_to task.title, project_task_path(@project.id, task.id) %></p>
+  
+<% end %>
+<%= link_to "Add a new Task for this project", new_project_task_path(project_id: @project.id) %>
+<hr>
 <div>
   <%= link_to "Edit this project", edit_project_path(@project) %> |
   <%= link_to "Back to projects", projects_path %>
